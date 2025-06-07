@@ -4,7 +4,7 @@ import authService from './appwrite/auth';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import { logout } from './store/authSlice';
-import { BrowserRouter } from 'react-router';
+import { BrowserRouter, Outlet } from 'react-router';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -23,14 +23,13 @@ function App() {
   }, []);
 
   return !loading ? (
-    <BrowserRouter>
-      <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
-        <div className="w-full block">
-          <Header />
-          <Footer />
-        </div>
+    <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
+      <div className="w-full block">
+        <Header />
+        <Outlet />
+        <Footer />
       </div>
-    </BrowserRouter>
+    </div>
   ) : null
 
 

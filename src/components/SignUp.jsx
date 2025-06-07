@@ -76,7 +76,7 @@ function SignUp() {
               })}
             />
 
-            <Button type="submit" className="w-full" >
+            <Button type="submit" className="w-full mt-4" >
               Create Account
             </Button>
           </div>

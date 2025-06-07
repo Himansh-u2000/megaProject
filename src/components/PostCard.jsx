@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import appwriteService from '../appwrite/config'
 
-function PostCart({
+function PostCard({
   $id,
   title, 
   featuredImage
@@ -19,4 +19,4 @@ function PostCart({
   )
 }
 
-export default PostCart 
+export default PostCard
