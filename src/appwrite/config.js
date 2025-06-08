@@ -1,5 +1,6 @@
 import conf from "../conf/conf";
 import { Client, ID, Databases, Storage, Query } from "appwrite";
+import authService from "./auth";
 
 export class Service {
   client = new Client();
@@ -16,10 +17,15 @@ export class Service {
   }
 
 
-  async createPost({title, slug, content, featuredImage, status, userId}) {
+  async createPost({ title, slug, content, featuredImage, status, userId }) {
     try {
+      const user = await authService.getCurrentuser()
+      console.log("User :: ", user)
+      if (!user) {
+        throw new Error("User not authenticatedx or logged in");
+      }
       return await this.databases.createDocument(
-        conf.appwriteDatabaseId, 
+        conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         slug,
         {
@@ -27,15 +33,15 @@ export class Service {
           content,
           featuredImage,
           status,
-          userId
+          userId: userId || user.$id
         }
       )
     } catch (error) {
-      console.log("Create Post :: Error :: ",error)
+      console.log("Create Post :: Error :: ", error)
     }
   }
 
-  async updatePost(slug, {title, content, featuredImage, status}){
+  async updatePost(slug, { title, content, featuredImage, status }) {
     try {
       return await this.databases.updateDocument(
         conf.appwriteDatabaseId,
@@ -53,7 +59,7 @@ export class Service {
     }
   }
 
-  async deletePost(slug){
+  async deletePost(slug) {
     try {
       await this.databases.deleteDocument(
         conf.appwriteDatabaseId,
@@ -67,7 +73,7 @@ export class Service {
     }
   }
 
-  async getPost(slug){
+  async getPost(slug) {
     try {
       return await this.databases.getDocument(
         conf.appwriteDatabaseId,
@@ -80,7 +86,7 @@ export class Service {
     }
   }
 
-  async getPosts(queries = [Query.equal("status", "active")]){
+  async getPosts(queries = [Query.equal("status", "active")]) {
     try {
       return await this.databases.listDocuments(
         conf.appwriteDatabaseId,
@@ -93,7 +99,7 @@ export class Service {
   }
 
   // file upload
-  async uploadFile(file){
+  async uploadFile(file) {
     try {
       return await this.bucket.createFile(
         conf.appwriteBucketId,
@@ -106,7 +112,7 @@ export class Service {
     }
   }
 
-  async deleteFile(fileId){
+  async deleteFile(fileId) {
     try {
       await this.bucket.deleteFile(
         conf.appwriteBucketId,
@@ -119,8 +125,8 @@ export class Service {
     }
   }
 
-  getFilePreview(fileId){
-    return this.bucket.getFilePreview(
+  getFilePreview(fileId) {
+    return this.bucket.getFileView(
       conf.appwriteBucketId,
       fileId
     )

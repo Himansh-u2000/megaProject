@@ -19,12 +19,11 @@ export default function PostForm({
 
   const navigate = useNavigate()
   const userData = useSelector(state => state.user?.userData)
-
-  console.log(userData)
+  console.log("UserData", userData)
 
   const submit = async (data) => {
     if (post) {
-      const file = data.images[0] ? appwriteService.uploadFile(data.image[0]) : null
+      const file = data.image?.[0] ? await appwriteService.uploadFile(data.image[0]) : null
 
       if (file) {
         appwriteService.deleteFile(post.featuredImage)
@@ -40,32 +39,37 @@ export default function PostForm({
         navigate(`/post/${dbPost.$id}`)
       }
     } else {
-      const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : undefined
+      const file = data.image?.[0] ? await appwriteService.uploadFile(data.image[0]) : undefined
 
       if (file) {
         const fileId = file.$id
         data.featuredImage = fileId
         const dbPost = await appwriteService.createPost({
           ...data,
-          userId: userData.$id,
-
+          userId: userData?.$id,
         })
         if (dbPost) {
-          navigate(`post/${dbPost.$id}`)
+          alert("Post Created Successfully")
+          navigate(`/post/${dbPost.$id}`)
         }
       }
     }
   }
 
   const slugTransform = useCallback((value) => {
-    if (value && typeof value === 'string') return value
-      .trim()
-      .toLowerCase()
-      .replace(/^[a-zA-Z\d\s]+/g, "-")
-      .replace(/\s/g, '-')
+    if (value && typeof value === 'string') {
+      return value
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')    // Remove special characters
+        .replace(/\s+/g, '-')            // Replace spaces with hyphens
+        .replace(/-+/g, '-')             // Collapse multiple hyphens
+        .replace(/^-+|-+$/g, '');        // Trim hyphens from start/end
+    }
 
     return '';
   }, []);
+
 
   useEffect(() => {
     const subscription = watch((value, { name }) => {
@@ -94,7 +98,7 @@ export default function PostForm({
             setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
           }}
         />
-        <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
+        <RTE label="Content :" name="content" control={control} defaultValue={getValues("")} />
       </div>
       <div className="w-1/3 px-2">
         <Input

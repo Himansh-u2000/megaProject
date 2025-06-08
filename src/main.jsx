@@ -13,6 +13,7 @@ import AllPosts from './pages/AllPosts.jsx'
 import AddPost from './pages/AddPost.jsx'
 import EditPost from './pages/EditPost.jsx'
 import Post from './pages/Post.jsx'
+import AppLayout from './components/AppLayout.jsx'
 
 
 const router = createBrowserRouter([
@@ -79,7 +80,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <AppLayout>
+        <RouterProvider router={router} />
+      </AppLayout>
     </Provider>
   </StrictMode>,
 )

@@ -32,18 +32,37 @@ export default function Post() {
     });
   };
 
+  console.log("Post Data", post);
+  if (post?.featuredImage) {
+    console.log("img: ", appwriteService.getFilePreview(post.featuredImage));
+  } else {
+    console.log("img: No image available");
+  }
+
+
+  if (!post) {
+    return <div className="text-center py-10">Loading post...</div>;
+  }
+
+
   return post ? (
-    <div className="py-8">
+    <div className="py-8 min-h-[80vh]">
       <Container>
         <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
-          <img
-            src={appwriteService.getFilePreview(post.featuredImage)}
-            alt={post.title}
-            className="rounded-xl"
-          />
+          {post?.featuredImage ? (
+            <img
+              src={appwriteService.getFilePreview(post.featuredImage)}
+              alt={post.title}
+              className="rounded-xl object-cover"
+            />
+          ) : (
+            <div className="rounded-xl bg-gray-100 h-64 w-full flex items-center justify-center text-gray-500">
+              No Image Available
+            </div>
+          )}
 
           {isAuthor && (
-            <div className="absolute right-6 top-6">
+            <div className="absolute right-6 top-10">
               <Link to={`/edit-post/${post.$id}`}>
                 <Button bgColor="bg-green-500" className="mr-3">
                   Edit
