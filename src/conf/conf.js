@@ -7,3 +7,5 @@ const conf = {
 }
 
 export default conf;
+
+console.log(conf)
