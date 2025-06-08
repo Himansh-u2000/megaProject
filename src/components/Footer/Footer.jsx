@@ -1,30 +1,94 @@
 import React from 'react'
 import Logo from '../Logo'
 import { NavLink } from 'react-router-dom'
-// import { a } from 'react-router'
 
 function Footer() {
   return (
-    <div className="footer bg-gray-800 text-white">
-      <div className="footer-top flex flex-col items-center py-8">
-        <Logo />
-        <nav className="footer-nav mt-4">
-          <ul className="flex flex-wrap justify-center gap-4">
-            <li><NavLink to="/about" className="hover:text-gray-400">About Us</NavLink></li>
-            <li><NavLink to="/services" className="hover:text-gray-400">Services</NavLink></li>
-            <li><NavLink to="/contact" className="hover:text-gray-400">Contact</NavLink></li>
-            <li><NavLink to="/privacy-policy" className="hover:text-gray-400">Privacy Policy</NavLink></li>
-            <li><NavLink to="/terms" className="hover:text-gray-400">Terms of Service</NavLink></li>
+    <div className="footer bg-green-600 text-white">
+      <div className="footer-top flex flex-col items-center py-8 md:py-12 px-4">
+        <div className="hover:scale-105 transition-transform duration-200">
+          <Logo />
+        </div>
+        <nav className="footer-nav mt-4 md:mt-6 w-full">
+          <ul className="flex flex-wrap justify-center gap-3 md:gap-6 text-center">
+            <li>
+              <NavLink
+                to="/about"
+                className="text-sm md:text-lg font-medium hover:text-yellow-300 transition-colors duration-200 hover:scale-105 inline-block px-2 py-1"
+              >
+                About Us
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/services"
+                className="text-sm md:text-lg font-medium hover:text-yellow-300 transition-colors duration-200 hover:scale-105 inline-block px-2 py-1"
+              >
+                Services
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/contact"
+                className="text-sm md:text-lg font-medium hover:text-yellow-300 transition-colors duration-200 hover:scale-105 inline-block px-2 py-1"
+              >
+                Contact
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/privacy-policy"
+                className="text-sm md:text-lg font-medium hover:text-yellow-300 transition-colors duration-200 hover:scale-105 inline-block px-2 py-1"
+              >
+                Privacy Policy
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/terms"
+                className="text-sm md:text-lg font-medium hover:text-yellow-300 transition-colors duration-200 hover:scale-105 inline-block px-2 py-1"
+              >
+                Terms of Service
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </div>
-      <div className="footer-bottom border-t border-gray-700 py-4 text-center">
-        <p className="text-sm">&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
-        <div className="social-links flex justify-center gap-4 mt-2">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Facebook</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Twitter</a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Instagram</a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">LinkedIn</a>
+      <div className="footer-bottom border-t border-white/20 py-4 md:py-6 text-center px-4">
+        <p className="text-sm md:text-lg mb-2 md:mb-4">&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
+        <div className="social-links flex flex-wrap justify-center gap-3 md:gap-6">
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm md:text-lg font-medium hover:text-blue-300 transition-all duration-200 hover:scale-110 px-2 md:px-3 py-1 rounded-full hover:bg-white/10"
+          >
+            Facebook
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm md:text-lg font-medium hover:text-cyan-300 transition-all duration-200 hover:scale-110 px-2 md:px-3 py-1 rounded-full hover:bg-white/10"
+          >
+            Twitter
+          </a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm md:text-lg font-medium hover:text-pink-300 transition-all duration-200 hover:scale-110 px-2 md:px-3 py-1 rounded-full hover:bg-white/10"
+          >
+            Instagram
+          </a>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm md:text-lg font-medium hover:text-blue-400 transition-all duration-200 hover:scale-110 px-2 md:px-3 py-1 rounded-full hover:bg-white/10"
+          >
+            LinkedIn
+          </a>
         </div>
       </div>
     </div>
