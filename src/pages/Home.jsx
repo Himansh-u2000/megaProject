@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import appwriteService from '../appwrite/config'
 import { Container, PostCard } from '../components'
+import { Link } from 'react-router'
 
 function Home() {
   const [posts, setPosts] = useState([])
@@ -20,15 +21,17 @@ function Home() {
             <div className="p-4 md:p-8 w-full max-w-2xl">
               <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl p-6 md:p-12 border border-green-100">
                 <div className="text-4xl md:text-6xl mb-4 md:mb-6">📝</div>
-                <h1 className='text-2xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4 bg-gradient-to-r from-green-600 to-red-600 bg-clip-text text-transparent'>
+                <h1 className='text-2xl md:text-4xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-green-600 to-red-600 bg-clip-text text-transparent'>
                   Welcome to Our Blog!
                 </h1>
                 <p className="text-base md:text-xl text-gray-600 mb-6 md:mb-8 leading-relaxed">
                   Discover amazing stories and insights. Login to start reading posts from our community.
                 </p>
-                <div className="inline-block px-6 md:px-8 py-2 md:py-3 bg-gradient-to-r from-green-500 to-red-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 text-sm md:text-base">
+                <Link
+                  to="login"
+                  className="inline-block px-6 md:px-8 py-2 md:py-3 bg-gradient-to-r from-green-500 to-red-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 text-sm md:text-base">
                   Login to read posts
-                </div>
+                </Link>
               </div>
             </div>
           </div>
