@@ -8,9 +8,10 @@ function EditPost() {
   const slug = useParams()
   const navigate = useNavigate()
 
+  console.log("post: ", slug)
   useEffect(() => {
     if (slug) {
-      appwriteService.getPost(slug).then((post) => {
+      appwriteService.getPost(slug.slug).then((post) => {
         if (post) {
           setPost(post)
         }
@@ -20,7 +21,7 @@ function EditPost() {
     }
   }, [slug, navigate])
   return post ? (
-    <div className="py-8 ">
+    <div className="py-8">
       <Container>
         <PostForm
           post={post}

@@ -61,7 +61,7 @@ function Footer() {
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm md:text-lg font-medium hover:text-blue-300 transition-all duration-200 hover:scale-110 px-2 md:px-3 py-1 rounded-full hover:bg-white/10"
+            className="text-sm md:text-lg font-medium hover:text-blue-600 transition-all duration-200 hover:scale-110 px-2 md:px-3 py-1 rounded-full"
           >
             Facebook
           </a>
@@ -69,7 +69,7 @@ function Footer() {
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm md:text-lg font-medium hover:text-cyan-300 transition-all duration-200 hover:scale-110 px-2 md:px-3 py-1 rounded-full hover:bg-white/10"
+            className="text-sm md:text-lg font-medium hover:text-cyan-600 transition-all duration-200 hover:scale-110 px-2 md:px-3 py-1 rounded-full"
           >
             Twitter
           </a>
@@ -77,7 +77,7 @@ function Footer() {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm md:text-lg font-medium hover:text-pink-300 transition-all duration-200 hover:scale-110 px-2 md:px-3 py-1 rounded-full hover:bg-white/10"
+            className="text-sm md:text-lg font-medium hover:text-pink-600 transition-all duration-200 hover:scale-110 px-2 md:px-3 py-1 rounded-full"
           >
             Instagram
           </a>
@@ -85,7 +85,7 @@ function Footer() {
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm md:text-lg font-medium hover:text-blue-400 transition-all duration-200 hover:scale-110 px-2 md:px-3 py-1 rounded-full hover:bg-white/10"
+            className="text-sm md:text-lg font-medium hover:text-blue-700 transition-all duration-200 hover:scale-110 px-2 md:px-3 py-1 rounded-full"
           >
             LinkedIn
           </a>
