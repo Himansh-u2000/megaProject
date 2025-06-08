@@ -8,6 +8,7 @@ export class Service {
   bucket;
 
   constructor() {
+    console.log("Appwrite URL:", conf.appwriteUrl);
     this.client
       .setEndpoint(conf.appwriteUrl)
       .setProject(conf.appwriteProjectId);
